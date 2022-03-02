@@ -9,36 +9,13 @@ let modal = document.getElementById('modal')
 let modalTitle = document.getElementById('modal-title')
 let instructionsTxt = document.getElementById('actual-instructions')
 let youtubeVid = document.getElementById('yt-vid')
-let beef = document.getElementById('beef')
-let chicken = document.getElementById('chicken')
-let pork = document.getElementById('pork')
-let lamb = document.getElementById('lamb')
-let goat = document.getElementById('goat')
-let cardImg = document.getElementById('card-img')
-let card = document.getElementById('recipe-cards')
-let cardTxt = document.getElementById('card-title')
-let viewRecipe = document.getElementById('view-recipe')
-
-
-categoryBtn.onclick = function () {
-  if (targetDiv.style.display !== "none") {
-    targetDiv.style.display = "none";
-  } else {
-    targetDiv.style.display = "block";
-  }
-};
 
 
 
-const miscellaneousDiv = document.getElementById('miscellaneousDiv')
-meatsBtn.addEventListener('mouseover', ()=>{
-  
-  if (meatDiv.style.display !== "none") {
-    meatDiv.style.display = "none";
-  } else {
-    meatDiv.style.display = "block";
-  }
-});
+
+
+
+
 
 miscellaneousBtn.addEventListener('click', ()=>{
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=miscellaneous`)
