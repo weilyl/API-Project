@@ -180,7 +180,9 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 //page 2
 
 // Event listener on view recipe button for a modal to show up on click
-function page2(chosenMeal, btn, mealName,mealImg){
+function page2(chosenMeal, btn, mealName, mealImg){
+const videoEmbed = document.getElementById("video")
+let videoUrl;
 const page1 = document.getElementById("page-1")
 const page2 = document.getElementById("page-2")
 const title = document.getElementById("2-page-title")
@@ -188,10 +190,13 @@ const backBtn = document.getElementById("back-btn")
 const image = document.getElementById('page-2-img')
   btn.addEventListener("click", () => {
     // console.log(chosenMeal[strMeal])
-    console.log(mealName)
+    // console.log(mealName)
     title.innerText = mealName;
-    image.src =mealImg
-    // console.log(title.innerText)
+    // image.src =mealImg
+    // let urlString="https://www.youtube.com/watch?v=H1pTkatn6sI";
+    // let url= urlString.replace('watch?v=','embed/', urlString);
+    // videoEmbed.src = chosenMeal.url;
+    // console.log(videoUrl)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
     page1.style.display = "none";
@@ -203,6 +208,10 @@ const image = document.getElementById('page-2-img')
     page1.style.display = "block";
   })
 }
+
+
+
+
 
 
 });
