@@ -1,112 +1,202 @@
 window.addEventListener('DOMContentLoaded', (e) => {
   e.preventDefault()
-const categoryBtn = document.querySelector('i')
-const meatsBtn = document.getElementById('meats')
-const meatDiv = document.getElementById('meatsDiv')
-const miscellaneousBtn = document.getElementById('miscellaneous')
-const targetDiv = document.getElementById("options");
-let modal = document.getElementById('modal')
-let modalTitle = document.getElementById('modal-title')
-let instructionsTxt = document.getElementById('actual-instructions')
-let youtubeVid = document.getElementById('yt-vid')
+
+ //   const randomBtn = document.getElementById("random-btn");
+//   const bottom = document.getElementById("bottom");
+
+  // functions setLiInnerText and getIngredients retrieves the list of ingredients and appends it to a ul
+  function setLiInnerText(amount, ingredient, list){
+    if(ingredient !== "" && ingredient !== null){
+      if(amount.match(/[0-9]/)){
+        let li = document.createElement("li");
+        li.innerText = `${amount} ${ingredient}`;
+        list.appendChild(li)
+        console.log(li.innerText);
+      }else{
+        let li = document.createElement("li");
+        li.innerText = ` ${ingredient} ${amount}`;
+        list.appendChild(li)
+        console.log(li.innerText);
+      }
+    }
+  }
+  function getIngredients(meal){
+    const ul = document.getElementById("ingredients");
+    setLiInnerText(meal.strMeasure1, meal.strIngredient1, ul);
+    setLiInnerText(meal.strMeasure2, meal.strIngredient2, ul);
+    setLiInnerText(meal.strMeasure3, meal.strIngredient3, ul);
+    setLiInnerText(meal.strMeasure4, meal.strIngredient4, ul);
+    setLiInnerText(meal.strMeasure5, meal.strIngredient5, ul);
+    setLiInnerText(meal.strMeasure6, meal.strIngredient6, ul);
+    setLiInnerText(meal.strMeasure7, meal.strIngredient7, ul);
+    setLiInnerText(meal.strMeasure8, meal.strIngredient8, ul);  
+    setLiInnerText(meal.strMeasure9, meal.strIngredient9, ul);  
+    setLiInnerText(meal.strMeasure10, meal.strIngredient10, ul);  
+    setLiInnerText(meal.strMeasure11, meal.strIngredient11, ul);  
+    setLiInnerText(meal.strMeasure12, meal.strIngredient12, ul);  
+    setLiInnerText(meal.strMeasure13, meal.strIngredient13, ul);  
+    setLiInnerText(meal.strMeasure14, meal.strIngredient14, ul);  
+    setLiInnerText(meal.strMeasure15, meal.strIngredient15, ul);  
+    setLiInnerText(meal.strMeasure16, meal.strIngredient16, ul);  
+    setLiInnerText(meal.strMeasure17, meal.strIngredient17, ul);  
+    setLiInnerText(meal.strMeasure18, meal.strIngredient18, ul);  
+    setLiInnerText(meal.strMeasure19, meal.strIngredient19, ul);  
+    setLiInnerText(meal.strMeasure20, meal.strIngredient20, ul);   
+  }
+
+  function getInstructions(meal){
+    const instruct = document.getElementById("instructions");
+    let instructions = meal.strInstructions;
+    instruct.innerText = instructions;
+  }
+
+//Event listener on the random button that shows recipes on click
+const getReandom = document.getElementById('random-Btn')
+let cardDiv = document.getElementById('card-div')
 
 
-
-
-
-
-
-
-miscellaneousBtn.addEventListener('click', ()=>{
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=miscellaneous`)
-  .then(res => res.json())
-  .then(data => {
-
-   let miscellaneousMeals =data.meals
-  //  console.log(miscellaneousMeals)
-   
-   for(let miscel of miscellaneousMeals){
-    targetDiv.style.display ="none"
-    card.style.display = "block"
-    // console.log(miscel)
-     let miscellaneousMealName = miscel.strMeal
-     console.log(miscellaneousMealName)
-     let miscellaneousImg = miscel.strMealThumb
-     cardTxt.innerText = miscellaneousMealName
-     cardImg.src = miscellaneousImg 
-     getFullRecipe(miscellaneousMealName)
-    
-   }
-
-  })
-
+getReandom.addEventListener('click', ()=> {
+  cardDiv.style.display ="flex"
+  card1()
+  card2()
+  card3()
+  card4()
+  card5()
+  card6()
 })
 
-function getIngredients(meals){
-let num = 0
-// console.log(meals.strIngredient1)
-// while(!meals.meals.stringredients`${num}`){
-// let recipeUl = document.getElementById('ingredients')
-// const li = document.createElement('li')
-// li.innerText = meals.stringredients`${num}`
-// li.appendChild(recipeUl)
-// num ++
+function card1 (){
+let title1 = document.getElementById('recipe-title1')
+let img1 = document.getElementById('img1')
+let category = document.getElementById('cat1')
+const btn1 = document.getElementById('btn-1')
 
-
-// }
+fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  let mealData = data.meals[0]
+  let cat = data.meals[0].strArea
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title1.innerText = mealName
+  img1.src = mealImg
+  console.log(mealData)
+  page2(mealData, btn1, mealName);
+})
 
 }
 
-
-         function getFullRecipe(meal){
-      viewRecipe.addEventListener('click', ()=>{
-        
-       
-          fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`)
-          .then(response => response.json())
-          .then(data => {
-            let mealName = data.meals[0].strmeals
-            // console.log(mealName)
-            let mealInstructions= data.meals[0].strInstructions
-            let ytVid = data.meals[0].strYoutube
-            // console.log(ytVid)
-            
-            modalTitle.innerText = mealName
-            instructionsTxt.innerText = mealInstructions
-            youtubeVid.src = ytVid
-          //  console.log(ytVid)
-       
-      getIngredients(data.meals[0])
-
-         modal.style.display = 'block'
-         
-       })
-          })
-   
-        }
-
-      
-
-     
-     
-
-      fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
-  .then(res=>res.json())
-  .then(dataa=> {
-    let categoriesObj = dataa.categories;
-    // console.log(categoriesObj)
-    for(let cat of categoriesObj){
-      let categories = cat.strCategory
-      
-      
-
-      // console.log(categories)
-    }
-  })
-
-  
-
-    
-  
-   
+function card2(){
+  let title2 = document.getElementById('recipe-title2')
+  let img2 = document.getElementById('img2')
+  const btn2 = document.getElementById('btn-2')
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  let mealData = data.meals[0]
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title2.innerText = mealName
+  img2.src = mealImg
+  page2(mealData, btn2, mealName);
 })
+}
+
+function card3(){
+  let title3 = document.getElementById('recipe-title3')
+let img3 = document.getElementById('img3')
+const btn3 = document.getElementById('btn-3')
+fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  let mealData = data.meals[0]
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title3.innerText = mealName
+  img3.src = mealImg
+  page2(mealData, btn3, mealName);
+})
+  
+}
+function card4(){
+  let title4 = document.getElementById('recipe-title4')
+  let img4 = document.getElementById('img4')
+  const btn4 = document.getElementById('btn-4')
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  // let meal
+  let mealData = data.meals[0]
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title4.innerText = mealName
+  img4.src = mealImg
+  page2(mealData, btn4, mealName);
+})
+
+  
+}
+function card5(){
+  const btn5 = document.getElementById('btn-5')
+  let title5 = document.getElementById('recipe-title5')
+  let img5 = document.getElementById('img5')
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  // let meal
+  let mealData = data.meals[0]
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title5.innerText = mealName
+  img5.src = mealImg
+  page2(mealData, btn5, mealName);
+})
+
+  
+}
+function card6(){
+  let title6 = document.getElementById('recipe-title6')
+  const btn6 = document.getElementById('btn-6')
+let img6 = document.getElementById('img6')
+fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+.then(res => res.json())
+.then(data => {
+  // let meal
+  let mealData = data.meals[0]
+  let mealImg = data.meals[0].strMealThumb
+  let mealName = data.meals[0].strMeal
+  title6.innerText = mealName
+  img6.src = mealImg
+  page2(mealData, btn6, mealName);
+})
+}
+
+
+
+//page 2
+
+// Event listener on view recipe button for a modal to show up on click
+function page2(chosenMeal, btn, mealName){
+const page1 = document.getElementById("page-1")
+const page2 = document.getElementById("page-2")
+const title = document.getElementsByClassName("title")
+const backBtn = document.getElementById("back-btn")
+  btn.addEventListener("click", () => {
+    // console.log(chosenMeal[strMeal])
+    title.innerText = mealName;
+    // console.log(title.innerText)
+    getIngredients(chosenMeal)
+    getInstructions(chosenMeal)
+    page1.style.display = "none";
+    page2.style.display = "block";
+  });
+
+  backBtn.addEventListener("click", () =>{
+    page2.style.display = "none";
+    page1.style.display = "block";
+  })
+}
+
+
+});
+
