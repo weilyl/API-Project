@@ -55,9 +55,14 @@ header {
     color: white;
   }
  
+h4{
+    width: 200px;
+    height: 30px;
+/* }
 
-
-
+.recipe-title-box{
+    align-items: center;
+} */
 
 
   

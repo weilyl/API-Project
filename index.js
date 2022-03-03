@@ -179,10 +179,10 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 function page2(chosenMeal, btn, mealName){
 const page1 = document.getElementById("page-1")
 const page2 = document.getElementById("page-2")
-const title = document.getElementsByClassName("title")
+const title = document.getElementById("2-page-title")
 const backBtn = document.getElementById("back-btn")
   btn.addEventListener("click", () => {
-    // console.log(chosenMeal[strMeal])
+    console.log(chosenMeal)
     title.innerText = mealName;
     // console.log(title.innerText)
     getIngredients(chosenMeal)
