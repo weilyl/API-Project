@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   }
   function getIngredients(meal){
     const ul = document.getElementById("ingredients");
+    const ul2 = document.getElementById("ingredients-2");
     setLiInnerText(meal.strMeasure1, meal.strIngredient1, ul);
     setLiInnerText(meal.strMeasure2, meal.strIngredient2, ul);
     setLiInnerText(meal.strMeasure3, meal.strIngredient3, ul);
@@ -31,17 +32,18 @@ window.addEventListener('DOMContentLoaded', (e) => {
     setLiInnerText(meal.strMeasure7, meal.strIngredient7, ul);
     setLiInnerText(meal.strMeasure8, meal.strIngredient8, ul);  
     setLiInnerText(meal.strMeasure9, meal.strIngredient9, ul);  
-    setLiInnerText(meal.strMeasure10, meal.strIngredient10, ul);  
-    setLiInnerText(meal.strMeasure11, meal.strIngredient11, ul);  
-    setLiInnerText(meal.strMeasure12, meal.strIngredient12, ul);  
-    setLiInnerText(meal.strMeasure13, meal.strIngredient13, ul);  
-    setLiInnerText(meal.strMeasure14, meal.strIngredient14, ul);  
-    setLiInnerText(meal.strMeasure15, meal.strIngredient15, ul);  
-    setLiInnerText(meal.strMeasure16, meal.strIngredient16, ul);  
-    setLiInnerText(meal.strMeasure17, meal.strIngredient17, ul);  
-    setLiInnerText(meal.strMeasure18, meal.strIngredient18, ul);  
-    setLiInnerText(meal.strMeasure19, meal.strIngredient19, ul);  
-    setLiInnerText(meal.strMeasure20, meal.strIngredient20, ul);   
+    setLiInnerText(meal.strMeasure10, meal.strIngredient10, ul);
+    
+    setLiInnerText(meal.strMeasure11, meal.strIngredient11, ul2);  
+    setLiInnerText(meal.strMeasure12, meal.strIngredient12, ul2);  
+    setLiInnerText(meal.strMeasure13, meal.strIngredient13, ul2);  
+    setLiInnerText(meal.strMeasure14, meal.strIngredient14, ul2);  
+    setLiInnerText(meal.strMeasure15, meal.strIngredient15, ul2);  
+    setLiInnerText(meal.strMeasure16, meal.strIngredient16, ul2);  
+    setLiInnerText(meal.strMeasure17, meal.strIngredient17, ul2);  
+    setLiInnerText(meal.strMeasure18, meal.strIngredient18, ul2);  
+    setLiInnerText(meal.strMeasure19, meal.strIngredient19, ul2);  
+    setLiInnerText(meal.strMeasure20, meal.strIngredient20, ul2);   
   }
 
   function getInstructions(meal){
@@ -73,7 +75,7 @@ function card1 (){
 let title1 = document.getElementById('recipe-title1')
 let img1 = document.getElementById('img1')
 let category = document.getElementById('cat1')
-const btn1 = document.getElementById('btn-1')
+const btn1 = document.getElementsByClassName('card')[0];
 
 fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 .then(res => res.json())
@@ -93,7 +95,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 function card2(){
   let title2 = document.getElementById('recipe-title2')
   let img2 = document.getElementById('img2')
-  const btn2 = document.getElementById('btn-2')
+  const btn2 = document.getElementsByClassName('card')[1];
   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 .then(res => res.json())
 .then(data => {
@@ -109,7 +111,7 @@ function card2(){
 function card3(){
   let title3 = document.getElementById('recipe-title3')
 let img3 = document.getElementById('img3')
-const btn3 = document.getElementById('btn-3')
+const btn3 = document.getElementsByClassName('card')[2];
 fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 .then(res => res.json())
 .then(data => {
@@ -125,7 +127,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 function card4(){
   let title4 = document.getElementById('recipe-title4')
   let img4 = document.getElementById('img4')
-  const btn4 = document.getElementById('btn-4')
+  const btn4 = document.getElementsByClassName('card')[3];
   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 .then(res => res.json())
 .then(data => {
@@ -141,7 +143,7 @@ function card4(){
   
 }
 function card5(){
-  const btn5 = document.getElementById('btn-5')
+  const btn5 = document.getElementsByClassName('card')[4];
   let title5 = document.getElementById('recipe-title5')
   let img5 = document.getElementById('img5')
   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
@@ -160,7 +162,7 @@ function card5(){
 }
 function card6(){
   let title6 = document.getElementById('recipe-title6')
-  const btn6 = document.getElementById('btn-6')
+  const btn6  = document.getElementsByClassName('card')[5];
 let img6 = document.getElementById('img6')
 fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 .then(res => res.json())
@@ -192,10 +194,10 @@ const image = document.getElementById('page-2-img')
     // console.log(chosenMeal[strMeal])
     // console.log(mealName)
     title.innerText = mealName;
-    // image.src =mealImg
-    // let urlString="https://www.youtube.com/watch?v=H1pTkatn6sI";
-    // let url= urlString.replace('watch?v=','embed/', urlString);
-    // videoEmbed.src = chosenMeal.url;
+    image.src =mealImg
+    let urlString=chosenMeal.strYoutube;
+    let url= urlString.replace('watch?v=','embed/', urlString);
+    videoEmbed.src = url;
     // console.log(videoUrl)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
