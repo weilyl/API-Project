@@ -1,8 +1,15 @@
-#header {
+body{
+    background-color: #7d8e95;
+}
+
+header {
     background-color: #fbe0c3;
-    height: 50vh;
+    height: 40vh;
     /* width: 100vw; */
     /* display: inline-block; */
     padding-top: 100px;
     text-align: center;
 }
+/* #meats :hover {
+    display: block;
+  } */
