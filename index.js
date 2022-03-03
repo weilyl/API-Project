@@ -11,12 +11,12 @@ window.addEventListener('DOMContentLoaded', (e) => {
         let li = document.createElement("li");
         li.innerText = `${amount} ${ingredient}`;
         list.appendChild(li)
-        console.log(li.innerText);
+        // console.log(li.innerText);
       }else{
         let li = document.createElement("li");
         li.innerText = ` ${ingredient} ${amount}`;
         list.appendChild(li)
-        console.log(li.innerText);
+        // console.log(li.innerText);
       }
     }
   }
@@ -47,7 +47,11 @@ window.addEventListener('DOMContentLoaded', (e) => {
   function getInstructions(meal){
     const instruct = document.getElementById("instructions");
     let instructions = meal.strInstructions;
-    instruct.innerText = instructions;
+    instruct.innerText = `${instructions}  `;
+    // instruct.innerText = " ";
+    instruct.style.width = '900px'; 
+    instruct.style.height = '100px'; 
+    instruct.style.paddingLeft = '90px'
   }
 
 //Event listener on the random button that shows recipes on click
@@ -81,7 +85,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   title1.innerText = mealName
   img1.src = mealImg
   console.log(mealData)
-  page2(mealData, btn1, mealName);
+  page2(mealData, btn1, mealName,mealImg);
 })
 
 }
@@ -98,7 +102,7 @@ function card2(){
   let mealName = data.meals[0].strMeal
   title2.innerText = mealName
   img2.src = mealImg
-  page2(mealData, btn2, mealName);
+  page2(mealData, btn2, mealName,mealImg);
 })
 }
 
@@ -114,7 +118,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   let mealName = data.meals[0].strMeal
   title3.innerText = mealName
   img3.src = mealImg
-  page2(mealData, btn3, mealName);
+  page2(mealData, btn3, mealName,mealImg);
 })
   
 }
@@ -131,7 +135,7 @@ function card4(){
   let mealName = data.meals[0].strMeal
   title4.innerText = mealName
   img4.src = mealImg
-  page2(mealData, btn4, mealName);
+  page2(mealData, btn4, mealName,mealImg);
 })
 
   
@@ -149,7 +153,7 @@ function card5(){
   let mealName = data.meals[0].strMeal
   title5.innerText = mealName
   img5.src = mealImg
-  page2(mealData, btn5, mealName);
+  page2(mealData, btn5, mealName,mealImg);
 })
 
   
@@ -167,7 +171,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   let mealName = data.meals[0].strMeal
   title6.innerText = mealName
   img6.src = mealImg
-  page2(mealData, btn6, mealName);
+  page2(mealData, btn6, mealName,mealImg);
 })
 }
 
@@ -176,14 +180,17 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 //page 2
 
 // Event listener on view recipe button for a modal to show up on click
-function page2(chosenMeal, btn, mealName){
+function page2(chosenMeal, btn, mealName,mealImg){
 const page1 = document.getElementById("page-1")
 const page2 = document.getElementById("page-2")
-const title = document.getElementsByClassName("title")
+const title = document.getElementById("2-page-title")
 const backBtn = document.getElementById("back-btn")
+const image = document.getElementById('page-2-img')
   btn.addEventListener("click", () => {
     // console.log(chosenMeal[strMeal])
+    console.log(mealName)
     title.innerText = mealName;
+    image.src =mealImg
     // console.log(title.innerText)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)

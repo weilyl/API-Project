@@ -3,11 +3,11 @@
     display:none;
 } 
 body{
-    background-color: #7D8E95;
+    background-color: #BCCFD3;
 }
 
 header {
-    background-color: #FBE0C3;
+    background-color: #86c3b4;
     height: 40vh;
     /* width: 100vw; */
     /* display: inline-block; */
@@ -54,9 +54,27 @@ header {
     background-color: black;
     color: white;
   }
- 
+ #page-2-img{
+   width:400px ;
+   height: 300px;
+   padding-right: 20px;
+ }
+ .img-txt{
+   display: flex;
+  
+ }
+ .ingredients-title{
+  display: flex;
+  padding-left: 40px;
+ }
 
-
+ .ing-title{
+   padding-left: 18px;
+ }
+ .ingredients-box{
+width:200px ;
+height: 200px;
+ }
 
 
 
