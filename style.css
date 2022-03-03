@@ -14,9 +14,10 @@ header {
     
 }
 .cards{
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
+    /* display: none; */
 }
 .card {
     /* Add shadows to create the "card" effect */
@@ -24,6 +25,7 @@ header {
     transition: 0.3s;
     margin: 10px;
     height: 400px;
+    width: 350px;
    
   }
   /* On mouse-over, add a deeper shadow */
@@ -38,6 +40,18 @@ header {
   }
   img{
       
-      height: 50%;
+      height: 45%;
       
   }
+  #random-Btn{
+      color:black ;
+      background-color: white;
+      border: black 1px solid;
+  }
+ #random-Btn:hover {
+    background-color: black;
+    color: white;
+  }
+ 
+
+  
