@@ -168,6 +168,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   // let meal
   let mealData = data.meals[0]
   let mealImg = data.meals[0].strMealThumb
+  console.log(mealImg)
   let mealName = data.meals[0].strMeal
   title6.innerText = mealName
   img6.src = mealImg
@@ -181,6 +182,8 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 // Event listener on view recipe button for a modal to show up on click
 function page2(chosenMeal, btn, mealName,mealImg){
+  const videoEmbed = document.getElementById("video")
+let videoUrl;
 const page1 = document.getElementById("page-1")
 const page2 = document.getElementById("page-2")
 const title = document.getElementById("2-page-title")
@@ -191,6 +194,9 @@ const image = document.getElementById('page-2-img')
     console.log(mealName)
     title.innerText = mealName;
     image.src =mealImg
+    let urlString=chosenMeal.strYoutube;
+    let url= urlString.replace('watch?v=','embed/', urlString);
+    videoEmbed.src = url;
     // console.log(title.innerText)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
