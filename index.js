@@ -1,14 +1,6 @@
 window.addEventListener('DOMContentLoaded', (e) => {
   e.preventDefault()
-const categoryBtn = document.querySelector('i')
-const meatsBtn = document.getElementById('meats')
-const meatDiv = document.getElementById('meatsDiv')
-const miscellaneousBtn = document.getElementById('miscellaneous')
-const targetDiv = document.getElementById("options");
-let modal = document.getElementById('modal')
-let modalTitle = document.getElementById('modal-title')
-let instructionsTxt = document.getElementById('actual-instructions')
-let youtubeVid = document.getElementById('yt-vid')
+const getReandom = document.getElementById('recipeBtn-gen')
 
 
 
