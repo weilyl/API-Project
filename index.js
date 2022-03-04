@@ -22,28 +22,11 @@ window.addEventListener('DOMContentLoaded', (e) => {
   }
   function getIngredients(meal){
     const ul = document.getElementById("ingredients");
-    const ul2 = document.getElementById("ingredients-2");
-    setLiInnerText(meal.strMeasure1, meal.strIngredient1, ul);
-    setLiInnerText(meal.strMeasure2, meal.strIngredient2, ul);
-    setLiInnerText(meal.strMeasure3, meal.strIngredient3, ul);
-    setLiInnerText(meal.strMeasure4, meal.strIngredient4, ul);
-    setLiInnerText(meal.strMeasure5, meal.strIngredient5, ul);
-    setLiInnerText(meal.strMeasure6, meal.strIngredient6, ul);
-    setLiInnerText(meal.strMeasure7, meal.strIngredient7, ul);
-    setLiInnerText(meal.strMeasure8, meal.strIngredient8, ul);  
-    setLiInnerText(meal.strMeasure9, meal.strIngredient9, ul);  
-    setLiInnerText(meal.strMeasure10, meal.strIngredient10, ul);
-    
-    setLiInnerText(meal.strMeasure11, meal.strIngredient11, ul2);  
-    setLiInnerText(meal.strMeasure12, meal.strIngredient12, ul2);  
-    setLiInnerText(meal.strMeasure13, meal.strIngredient13, ul2);  
-    setLiInnerText(meal.strMeasure14, meal.strIngredient14, ul2);  
-    setLiInnerText(meal.strMeasure15, meal.strIngredient15, ul2);  
-    setLiInnerText(meal.strMeasure16, meal.strIngredient16, ul2);  
-    setLiInnerText(meal.strMeasure17, meal.strIngredient17, ul2);  
-    setLiInnerText(meal.strMeasure18, meal.strIngredient18, ul2);  
-    setLiInnerText(meal.strMeasure19, meal.strIngredient19, ul2);  
-    setLiInnerText(meal.strMeasure20, meal.strIngredient20, ul2);   
+    for(let i = 1; i <= 20; i++){
+      let strIngredient = `strIngredient${i}`
+      let strMeasure = `strMeasure${i}`
+      setLiInnerText(meal[strMeasure],meal[strIngredient], ul)
+    }
   }
 
   function getInstructions(meal){
@@ -51,18 +34,24 @@ window.addEventListener('DOMContentLoaded', (e) => {
     let instructions = meal.strInstructions;
     instruct.innerText = `${instructions}  `;
     // instruct.innerText = " ";
-    instruct.style.width = '900px'; 
-    instruct.style.height = '100px'; 
+    instruct.style.width = '850px'; 
+    // instruct.style.height = '100px'; 
     instruct.style.paddingLeft = '90px'
+    // instruct.style.paddingRight = '40px'
   }
 
 //Event listener on the random button that shows recipes on click
 const getReandom = document.getElementById('random-Btn')
 let cardDiv = document.getElementById('card-div')
 
-
-getReandom.addEventListener('click', ()=> {
   cardDiv.style.display ="flex"
+  card1()
+  card2()
+  card3()
+  card4()
+  card5()
+  card6()
+getReandom.addEventListener('click', ()=> {
   card1()
   card2()
   card3()
@@ -179,6 +168,28 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 
 
+
+//let str = data.category
+
+function setSrc(str){
+  const iframeElement = document.getElementById('player')
+  const playlist = {
+    Beef: "https://open.spotify.com/album/4YTduhQWfS0pOzQC4o0HcG?si=-lIp67kXTMSUnHbJ6iUxDg",
+    Seafood: "https://open.spotify.com/embed/album/4aAwvCRNJIqiUGVEjieWv6",
+    Chicken: "https://open.spotify.com/playlist/77FYGIlUZbWYMuuSPjILOX?si=0ded90b08d524505",
+    Dessert: "https://open.spotify.com/album/6qqa1vvE1Q3qj2k8Gc3iEY?si=Pem3lND_Q4K4ZfjKIKS24Q",
+    Lamb: "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3MFmq4?si=06d62a85fde248fc",
+    Pasta: "https://open.spotify.com/playlist/6xL6K3EBL24rF6bHy2PtRW?si=835e542f386145d9",
+    Pork: "https://open.spotify.com/playlist/599a2pgUrtBBkAZdS3IKWS?si=a7a5856b0d434b5e",
+    Starter: "https://open.spotify.com/playlist/4fBV2fjgpUw4n9bYLElwAl?si=2bda823ceb6c43fc",
+    Vegan: "https://open.spotify.com/playlist/00i0kAaHuI8C0v6J9mhxbY?si=5ddc5ee398254382",
+    Vegetarian: "https://open.spotify.com/playlist/3WmcKgX83LRqQVTSTkYY6f?si=84374a3106df4601",
+    Breakfast: "https://open.spotify.com/playlist/7JHC5iBWrzAloy65eYLVCd?si=5664354991154237"
+  }
+  iframeElement.src = playlist[str]
+}
+
+
 //page 2
 
 // Event listener on view recipe button for a modal to show up on click
@@ -201,8 +212,10 @@ const image = document.getElementById('page-2-img')
     // console.log(videoUrl)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
+    setSrc(chosenMeal.strCategory)
     page1.style.display = "none";
     page2.style.display = "block";
+
   });
 
   backBtn.addEventListener("click", () =>{

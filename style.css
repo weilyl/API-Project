@@ -18,10 +18,10 @@ header {
     
 }
 .cards{
-    display: none;
+    /* display: none; */
     flex-wrap: wrap;
     justify-content: center;
-    display: none;
+    /* display: none; */
     padding-top: 10px;
 
 }
@@ -59,7 +59,9 @@ header {
       transition: all 0.2s ease-in-out;
   }
  #random-Btn:hover {
-    background-color: black;
+    background-color: #11738D;
+    /* #A2A1DB; */
+    /* #FBBB8D; */
     color: white;
     animation: swing 1s ease;
     animation-iteration-count: 1;
@@ -71,7 +73,6 @@ header {
  }
  .img-txt{
    display: flex;
-  
  }
  .ingredients-title{
   display: flex;
@@ -83,29 +84,11 @@ header {
  }
  .ingredients-box{
 width:200px ;
-height: 200px;
  }
 
 /* h4{
     margin-top: 20px;
 } */
-
-
-/* button { */
-    /* color: #1D9AF2; */
-    /* background-color: #292D3E; */
-    /* border: 1px solid #1D9AF2; */
-    /* border-radius: 4px; */
-    /* padding: 0 15px; */
-    /* cursor: pointer; */
-    /* height: 32px; */
-    /* font-size: 14px; */
-    /* transition: all 0.2s ease-in-out; */
-  /* } */
-  /* button:hover {
-   animation: swing 1s ease;
-   animation-iteration-count: 1;
-  } */
   
    @keyframes swing {
     15% {
@@ -135,4 +118,19 @@ height: 200px;
   } 
 
   
- 
+ .ingredients-div{
+   display: flex;
+   height: 200px;
+   overflow-y: scroll;
+
+
+ }
+
+.video-div{
+  margin-top: 10px;
+  padding-left: 90px;
+}
+
+#player{
+  display:block;
+}
