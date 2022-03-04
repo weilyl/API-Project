@@ -142,7 +142,7 @@ h4{
   
  .ingredients-div{
    display: flex;
-   height: 200px;
+   height: 300px;
    overflow-y: scroll;
    width: 200px;
    margin-left: 50px;
@@ -157,9 +157,9 @@ h4{
 
 #back-btn{
   margin: 25px 30px;
-   background-color: transparent;
-   font-size: 50px;
-   border:none;
+  background-color: transparent;
+  font-size: 50px;
+  border:none;
 }
 
 #main-title{
@@ -178,6 +178,7 @@ h4{
   display: flex;
   margin-top: 60px;
   margin-right: 300px;
+  padding-bottom: 50px;
 }
 #ingredients{
   font-size: 15px;
@@ -186,6 +187,7 @@ h4{
 #playlist-div{
   /* padding-right: 100px; */
 }
+
 
 @media only screen and (max-width: 960px) {
   #page-2-img{
