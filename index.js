@@ -205,26 +205,26 @@ const image = document.getElementById('page-2-img')
     image.src =mealImg
     let urlString=chosenMeal.strYoutube;
     let url= urlString.replace('watch?v=','embed/', urlString);
-    let response = await fetch(url, {
-      mode: 'no-cors',
-      method: "GET",
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    fetch("https://gdata.youtube.com/feeds/api/videos/video_id?v=watch?v=L_jWHffIx5E&alt=json-in-script", {
-      mode: 'no-cors',
-      method: "GET",
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    }).then(res => console.log(res.json()))
-    .then(data => console.log(data))
-    console.log("Response status: ", response.ok)
-    if (!response.ok) {
-      let holoTaco = "https://www.youtube.com/watch?v=IyQJdaZLkzc"
-      url = holoTaco.replace('watch?v=','embed/', holoTaco);
-      console.log("url: ", url)
+    let videoID = urlString.split('watch?v=')[1]
+    console.log(videoID);
+    let apiKey = "AIzaSyBp-Du1cFivdHJvLNk7j_sHZw6_Rwq_UIM"
+    let videoDataURL = `https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=${videoID}&key=${apiKey}`
+    let resp = await fetch(videoDataURL)
+    let data = await resp.json()
+    console.log(data)
+    let isEmbeddable, isPrivate, shouldUseOtherVideo;
+    if (data.items.length <1) {
+      shouldUseOtherVideo = true
+    } else {
+      isEmbeddable = data.items[0].status ? data.items[0].status.embeddable : false
+      isPrivate = data.items.length < 1 || data.items[0].status ? data.items[0].status.privacyStatus != "public" : true
+      shouldUseOtherVideo = isPrivate || isEmbeddable == false
+    }
+    console.log(`Should I use another video?: ${shouldUseOtherVideo}`)
+    if (shouldUseOtherVideo) {
+      console.log("Hard-coding video to embeddable public video")
+      url = "https://www.youtube.com/embed/IyQJdaZLkzc"
+      let searchVideoURL= 'https://youtube.googleapis.com/youtube/v3/search?part=items&q=handi&videoEmbeddable=true&key=[YOUR_API_KEY]'
     }
     console.log(`Video URL is: ${url}`)
     videoEmbed.src = url;
