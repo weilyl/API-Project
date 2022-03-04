@@ -179,3 +179,25 @@ h4{
   margin-right: 100px;
 }
 
+@media only screen and (max-width: 960px) {
+  #page-2-img{
+    display: none;
+  }
+  #bottom-half {
+    display: block;
+    align-items: center
+  }
+  #bottom-half.ingredients-div{
+    text-align: center
+
+  }
+  .ingredients-box{
+    display: block;
+    justify-content: center;
+  }
+  /* #page-2{
+    display:block;
+  } */
+
+
+}
