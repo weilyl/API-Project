@@ -74,6 +74,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   let mealImg = data.meals[0].strMealThumb
   let mealName = data.meals[0].strMeal
   title1.innerText = mealName
+  // title1.style.fontWeight = "bold";
   img1.src = mealImg
   console.log(mealData)
   page2(mealData, btn1, mealName,mealImg);
@@ -169,25 +170,6 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 
 
-//let str = data.category
-
-function setSrc(str){
-  const iframeElement = document.getElementById('player')
-  const playlist = {
-    Beef: "https://open.spotify.com/album/4YTduhQWfS0pOzQC4o0HcG?si=-lIp67kXTMSUnHbJ6iUxDg",
-    Seafood: "https://open.spotify.com/embed/album/4aAwvCRNJIqiUGVEjieWv6",
-    Chicken: "https://open.spotify.com/playlist/77FYGIlUZbWYMuuSPjILOX?si=0ded90b08d524505",
-    Dessert: "https://open.spotify.com/album/6qqa1vvE1Q3qj2k8Gc3iEY?si=Pem3lND_Q4K4ZfjKIKS24Q",
-    Lamb: "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3MFmq4?si=06d62a85fde248fc",
-    Pasta: "https://open.spotify.com/playlist/6xL6K3EBL24rF6bHy2PtRW?si=835e542f386145d9",
-    Pork: "https://open.spotify.com/playlist/599a2pgUrtBBkAZdS3IKWS?si=a7a5856b0d434b5e",
-    Starter: "https://open.spotify.com/playlist/4fBV2fjgpUw4n9bYLElwAl?si=2bda823ceb6c43fc",
-    Vegan: "https://open.spotify.com/playlist/00i0kAaHuI8C0v6J9mhxbY?si=5ddc5ee398254382",
-    Vegetarian: "https://open.spotify.com/playlist/3WmcKgX83LRqQVTSTkYY6f?si=84374a3106df4601",
-    Breakfast: "https://open.spotify.com/playlist/7JHC5iBWrzAloy65eYLVCd?si=5664354991154237"
-  }
-  iframeElement.src = playlist[str]
-}
 
 
 //page 2
@@ -212,7 +194,7 @@ const image = document.getElementById('page-2-img')
     // console.log(videoUrl)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
-    setSrc(chosenMeal.strCategory)
+    // setSrc(chosenMeal.strCategory)
     page1.style.display = "none";
     page2.style.display = "block";
 

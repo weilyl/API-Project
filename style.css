@@ -1,20 +1,27 @@
 
+@import url('http://fonts.cdnfonts.com/css/gyahegi');
+
 #page-2{
-    display:none;
-    background-color: #ACBDBA;
+  display:none;
+  background-image: linear-gradient(#C0AE9A, #D5DAD3);
+  background-repeat:no-repeat;
+  background-attachment: fixed; 
 } 
 body{
-    background-color: #B6D6CC;
+  background-image: linear-gradient(#C0AE9A, #D5DAD3);
+  background-repeat:no-repeat;
+  background-attachment: fixed; 
 }
 
 header {
-    background-color: #86c3b4; ;
-    height: 40vh;
+    /* background-color: #15A390; */
+    /* #86c3b4; ; */
+    /* height: 40vh; */
     /* width: 100vw; */
     /* display: inline-block; */
-    padding-top: 100px;
+    /* padding-top: 100px; */
     text-align: center;
-    padding-bottom: 10em;
+    /* padding-bottom: 10em; */
     
 }
 .cards{
@@ -44,6 +51,8 @@ header {
   .container {
     padding: 2.5em 8em;
     height: 50px;
+    text-align: center;
+    font-weight: bolder;
 
   }
   img{
@@ -54,12 +63,12 @@ header {
 
   #random-Btn{
       color:black ;
-      background-color: white;
+      background-color: transparent;
       border: black 1px solid;
       transition: all 0.2s ease-in-out;
   }
  #random-Btn:hover {
-    background-color: #11738D;
+    background-color: #8A796F;
     /* #A2A1DB; */
     /* #FBBB8D; */
     color: white;
@@ -86,9 +95,12 @@ header {
 width:200px ;
  }
 
-/* h4{
-    margin-top: 20px;
-} */
+h4{
+ font-weight: bolder;
+ font-size: 1.4em;
+ width: max-content;
+ align-items: center;
+}
   
    @keyframes swing {
     15% {
@@ -122,8 +134,8 @@ width:200px ;
    display: flex;
    height: 200px;
    overflow-y: scroll;
-
-
+   /* margin-left: px; */
+   margin-right: 80px;
  }
 
 .video-div{
@@ -131,6 +143,26 @@ width:200px ;
   padding-left: 90px;
 }
 
-#player{
-  display:block;
+#back-btn{
+  margin: 0;
+   background-color: transparent;
+   font-size: 50px;
+   border:none;
+}
+
+#main-title{
+  padding-top: 10px; 
+  font-family: 'Gyahegi', sans-serif;                                
+}
+
+.title{
+  font-family: 'Gyahegi', sans-serif;  
+  text-align:center;
+  font-size: 4em;
+  margin-bottom: 80px;
+}
+
+#bottom-half{
+  display: flex;
+  margin-top: 60px;
 }
