@@ -61,14 +61,21 @@ const getReandom = document.getElementById('random-Btn')
 let cardDiv = document.getElementById('card-div')
 
 
-getReandom.addEventListener('click', ()=> {
-  cardDiv.style.display ="flex"
+// 
   card1()
   card2()
   card3()
   card4()
   card5()
   card6()
+getReandom.addEventListener('click', ()=> {
+  card1()
+  card2()
+  card3()
+  card4()
+  card5()
+  card6()
+//   cardDiv.style.display ="flex"
 })
 
 function card1 (){

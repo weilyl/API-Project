@@ -18,10 +18,10 @@ header {
     
 }
 .cards{
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    display: none;
+    /* display: none; */
     padding-top: 10px;
 
 }
