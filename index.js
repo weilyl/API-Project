@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     // instruct.style.paddingRight = '40px'
     instruct.style.overflowY = "scroll";
     instruct.style.height = "300px";
+    instruct.style.fontSize = "15px";
   }
 
 //Event listener on the random button that shows recipes on click
