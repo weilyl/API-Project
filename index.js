@@ -38,6 +38,9 @@ window.addEventListener('DOMContentLoaded', (e) => {
     // instruct.style.height = '100px'; 
     instruct.style.paddingLeft = '90px'
     // instruct.style.paddingRight = '40px'
+    instruct.style.overflowY = "scroll";
+    instruct.style.height = "300px";
+    instruct.style.fontSize = "15px";
   }
 
 //Event listener on the random button that shows recipes on click
@@ -74,6 +77,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   let mealImg = data.meals[0].strMealThumb
   let mealName = data.meals[0].strMeal
   title1.innerText = mealName
+  // title1.style.fontWeight = "bold";
   img1.src = mealImg
   console.log(mealData)
   page2(mealData, btn1, mealName,mealImg);
@@ -245,7 +249,7 @@ const image = document.getElementById('page-2-img')
     videoEmbed.src = url;
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
-    setSrc(chosenMeal.strCategory)
+    // setSrc(chosenMeal.strCategory)
     page1.style.display = "none";
     page2.style.display = "block";
 
@@ -256,10 +260,6 @@ const image = document.getElementById('page-2-img')
     page1.style.display = "block";
   })
 }
-
-
-
-
 
 
 });

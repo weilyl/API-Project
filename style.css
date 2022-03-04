@@ -1,20 +1,27 @@
 
+@import url('http://fonts.cdnfonts.com/css/gyahegi');
+
 #page-2{
-    display:none;
-    background-color: #ACBDBA;
+  display:none;
+  background-image: linear-gradient(#C0AE9A, #D5DAD3);
+  background-repeat:no-repeat;
+  background-attachment: fixed; 
 } 
 body{
-    background-color: #B6D6CC;
+  background-image: linear-gradient(#C0AE9A, #D5DAD3);
+  background-repeat:no-repeat;
+  background-attachment: fixed; 
 }
 
 header {
-    background-color: #86c3b4; ;
-    height: 40vh;
+    /* background-color: #15A390; */
+    /* #86c3b4; ; */
+    /* height: 40vh; */
     /* width: 100vw; */
     /* display: inline-block; */
-    padding-top: 100px;
+    /* padding-top: 100px; */
     text-align: center;
-    padding-bottom: 10em;
+    /* padding-bottom: 10em; */
     
 }
 .cards{
@@ -42,9 +49,18 @@ header {
    }
   /* Add some padding inside the card container */
   .container {
-    padding: 2.5em 8em;
     height: 50px;
-
+    display: flex;
+    flex:wrap;
+    /* justify-content: center; */
+    font-weight: bolder;
+    padding-top: 10px;
+    align-items: center;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
   }
   img{
       height: 325px;
@@ -54,12 +70,12 @@ header {
 
   #random-Btn{
       color:black ;
-      background-color: white;
+      background-color: transparent;
       border: black 1px solid;
       transition: all 0.2s ease-in-out;
   }
  #random-Btn:hover {
-    background-color: #11738D;
+    background-color: #8A796F;
     /* #A2A1DB; */
     /* #FBBB8D; */
     color: white;
@@ -67,28 +83,34 @@ header {
     animation-iteration-count: 1;
   }
  #page-2-img{
-   width:400px ;
-   height: 300px;
+   width:325 ;
+   height: 398;
    padding-right: 20px;
+   padding-left: 65px;
  }
  .img-txt{
    display: flex;
  }
- .ingredients-title{
+ /* .ingredients-title{
   display: flex;
   padding-left: 40px;
- }
+ } */
 
  .ing-title{
-   padding-left: 18px;
+   margin-left: 95px;
  }
  .ingredients-box{
-width:200px ;
- }
+width:200px;
+}
 
-/* h4{
-    margin-top: 20px;
-} */
+h4{
+ font-weight: bolder;
+ font-size: 1.4em;
+ width: max-content;
+ /* text-align: center; */
+ /* justify-content:center ; */
+
+}
   
    @keyframes swing {
     15% {
@@ -122,15 +144,61 @@ width:200px ;
    display: flex;
    height: 200px;
    overflow-y: scroll;
-
-
+   width: 200px;
+   margin-left: 50px;
+   margin-right: 80px;
  }
 
 .video-div{
-  margin-top: 10px;
-  padding-left: 90px;
+  margin-top: 0px;
+  padding-left: 300px;
 }
 
-#player{
-  display:block;
+#back-btn{
+  margin: 25px 30px;
+   background-color: transparent;
+   font-size: 50px;
+   border:none;
+}
+
+#main-title{
+  padding-top: 10px; 
+  font-family: 'Gyahegi', sans-serif;                                
+}
+
+.title{
+  font-family: 'Gyahegi', sans-serif;  
+  text-align:center;
+  font-size: 4em;
+  margin-bottom: 80px;
+}
+
+#bottom-half{
+  display: flex;
+  margin-top: 60px;
+  margin-right: 100px;
+}
+#ingredients{
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 960px) {
+  #page-2-img{
+    display: none;
+  }
+  #bottom-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+  #bottom-half.ingredients-div{
+    text-align: center
+
+  }
+  .ingredients-box{
+    display: block;
+    justify-content: center;
+  }
+
+
 }
