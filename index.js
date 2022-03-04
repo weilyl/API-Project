@@ -22,28 +22,11 @@ window.addEventListener('DOMContentLoaded', (e) => {
   }
   function getIngredients(meal){
     const ul = document.getElementById("ingredients");
-    const ul2 = document.getElementById("ingredients-2");
-    setLiInnerText(meal.strMeasure1, meal.strIngredient1, ul);
-    setLiInnerText(meal.strMeasure2, meal.strIngredient2, ul);
-    setLiInnerText(meal.strMeasure3, meal.strIngredient3, ul);
-    setLiInnerText(meal.strMeasure4, meal.strIngredient4, ul);
-    setLiInnerText(meal.strMeasure5, meal.strIngredient5, ul);
-    setLiInnerText(meal.strMeasure6, meal.strIngredient6, ul);
-    setLiInnerText(meal.strMeasure7, meal.strIngredient7, ul);
-    setLiInnerText(meal.strMeasure8, meal.strIngredient8, ul);  
-    setLiInnerText(meal.strMeasure9, meal.strIngredient9, ul);  
-    setLiInnerText(meal.strMeasure10, meal.strIngredient10, ul);
-    
-    setLiInnerText(meal.strMeasure11, meal.strIngredient11, ul2);  
-    setLiInnerText(meal.strMeasure12, meal.strIngredient12, ul2);  
-    setLiInnerText(meal.strMeasure13, meal.strIngredient13, ul2);  
-    setLiInnerText(meal.strMeasure14, meal.strIngredient14, ul2);  
-    setLiInnerText(meal.strMeasure15, meal.strIngredient15, ul2);  
-    setLiInnerText(meal.strMeasure16, meal.strIngredient16, ul2);  
-    setLiInnerText(meal.strMeasure17, meal.strIngredient17, ul2);  
-    setLiInnerText(meal.strMeasure18, meal.strIngredient18, ul2);  
-    setLiInnerText(meal.strMeasure19, meal.strIngredient19, ul2);  
-    setLiInnerText(meal.strMeasure20, meal.strIngredient20, ul2);   
+    for(let i = 1; i <= 20; i++){
+      let strIngredient = `strIngredient${i}`
+      let strMeasure = `strMeasure${i}`
+      setLiInnerText(meal[strMeasure],meal[strIngredient], ul)
+    }
   }
 
   function getInstructions(meal){
@@ -51,18 +34,27 @@ window.addEventListener('DOMContentLoaded', (e) => {
     let instructions = meal.strInstructions;
     instruct.innerText = `${instructions}  `;
     // instruct.innerText = " ";
-    instruct.style.width = '900px'; 
-    instruct.style.height = '100px'; 
+    instruct.style.width = '850px'; 
+    // instruct.style.height = '100px'; 
     instruct.style.paddingLeft = '90px'
+    // instruct.style.paddingRight = '40px'
+    instruct.style.overflowY = "scroll";
+    instruct.style.height = "300px";
+    instruct.style.fontSize = "15px";
   }
 
 //Event listener on the random button that shows recipes on click
 const getReandom = document.getElementById('random-Btn')
 let cardDiv = document.getElementById('card-div')
 
-
-getReandom.addEventListener('click', ()=> {
   cardDiv.style.display ="flex"
+  card1()
+  card2()
+  card3()
+  card4()
+  card5()
+  card6()
+getReandom.addEventListener('click', ()=> {
   card1()
   card2()
   card3()
@@ -85,6 +77,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
   let mealImg = data.meals[0].strMealThumb
   let mealName = data.meals[0].strMeal
   title1.innerText = mealName
+  // title1.style.fontWeight = "bold";
   img1.src = mealImg
   console.log(mealData)
   page2(mealData, btn1, mealName,mealImg);
@@ -179,6 +172,9 @@ fetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 
 
+
+
+
 //page 2
 
 // Event listener on view recipe button for a modal to show up on click
@@ -201,8 +197,10 @@ const image = document.getElementById('page-2-img')
     // console.log(videoUrl)
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
+    // setSrc(chosenMeal.strCategory)
     page1.style.display = "none";
     page2.style.display = "block";
+
   });
 
   backBtn.addEventListener("click", () =>{
@@ -210,10 +208,6 @@ const image = document.getElementById('page-2-img')
     page1.style.display = "block";
   })
 }
-
-
-
-
 
 
 });
