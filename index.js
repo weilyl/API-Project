@@ -38,6 +38,8 @@ window.addEventListener('DOMContentLoaded', (e) => {
     // instruct.style.height = '100px'; 
     instruct.style.paddingLeft = '90px'
     // instruct.style.paddingRight = '40px'
+    instruct.style.overflowY = "scroll";
+    instruct.style.height = "300px";
   }
 
 //Event listener on the random button that shows recipes on click
@@ -205,10 +207,6 @@ const image = document.getElementById('page-2-img')
     page1.style.display = "block";
   })
 }
-
-
-
-
 
 
 });

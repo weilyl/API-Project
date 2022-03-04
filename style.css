@@ -49,11 +49,18 @@ header {
    }
   /* Add some padding inside the card container */
   .container {
-    padding: 2.5em 8em;
     height: 50px;
-    text-align: center;
+    display: flex;
+    flex:wrap;
+    /* justify-content: center; */
     font-weight: bolder;
-
+    padding-top: 10px;
+    align-items: center;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
   }
   img{
       height: 325px;
@@ -76,30 +83,33 @@ header {
     animation-iteration-count: 1;
   }
  #page-2-img{
-   width:400px ;
-   height: 300px;
+   width:325 ;
+   height: 398;
    padding-right: 20px;
+   padding-left: 65px;
  }
  .img-txt{
    display: flex;
  }
- .ingredients-title{
+ /* .ingredients-title{
   display: flex;
   padding-left: 40px;
- }
+ } */
 
  .ing-title{
-   padding-left: 18px;
+   margin-left: 95px;
  }
  .ingredients-box{
-width:200px ;
- }
+width:200px;
+}
 
 h4{
  font-weight: bolder;
  font-size: 1.4em;
  width: max-content;
- align-items: center;
+ /* text-align: center; */
+ /* justify-content:center ; */
+
 }
   
    @keyframes swing {
@@ -134,17 +144,18 @@ h4{
    display: flex;
    height: 200px;
    overflow-y: scroll;
-   /* margin-left: px; */
+   width: 200px;
+   margin-left: 50px;
    margin-right: 80px;
  }
 
 .video-div{
-  margin-top: 10px;
-  padding-left: 90px;
+  margin-top: 0px;
+  padding-left: 300px;
 }
 
 #back-btn{
-  margin: 0;
+  margin: 25px 30px;
    background-color: transparent;
    font-size: 50px;
    border:none;
@@ -165,4 +176,6 @@ h4{
 #bottom-half{
   display: flex;
   margin-top: 60px;
+  margin-right: 100px;
 }
+
