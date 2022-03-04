@@ -223,8 +223,25 @@ const image = document.getElementById('page-2-img')
     console.log(`Should I use another video?: ${shouldUseOtherVideo}`)
     if (shouldUseOtherVideo) {
       console.log("Hard-coding video to embeddable public video")
-      url = "https://www.youtube.com/embed/PFwc8BfSvCw"
-      let searchVideoURL= 'https://youtube.googleapis.com/youtube/v3/search?part=items&q=handi&videoEmbeddable=true&key=[YOUR_API_KEY]'
+      let searchVideoURL= `https://youtube.googleapis.com/youtube/v3/search?part=items%2Cid&q=${mealName}&videoEmbeddable=true&key=${apiKey}`
+      let searchResp = async () => {
+        await fetch(searchVideoURL)
+      }
+      let searchData = await searchResp.json()
+      let searchResults = searchData.items
+      let useableVideo = false
+      let currIdx = 0;
+      let newVideoID = '';
+      while (useableVideo) {
+        let currVideoData = searchResults[currIdx]
+        let isCurrEmbeddable = currVideoData.status.embeddable
+        let isCurrPublic = currVideoData.status.privacyStatus == "public"
+        let useableVideo = isCurrEmbeddable && isCurrPublic
+        newVideoID = useableVideo ? currVideoData.id : ''
+        currIdx++
+      }
+      let youtubeEmbedURLPrefix = "https://www.youtube.com/embed/"
+      url = newVideoID.length > 1? `${youtubeEmbedURLPrefix}${newVideoID}` : `${youtubeEmbedURLPrefix}PFwc8BfSvCw`
     }
     console.log(`Video URL is: ${url}`)
     videoEmbed.src = url;
