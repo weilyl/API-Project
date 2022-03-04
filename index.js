@@ -223,7 +223,7 @@ const image = document.getElementById('page-2-img')
     console.log(`Should I use another video?: ${shouldUseOtherVideo}`)
     if (shouldUseOtherVideo) {
       console.log("Hard-coding video to embeddable public video")
-      url = "https://www.youtube.com/embed/IyQJdaZLkzc"
+      url = "https://www.youtube.com/embed/PFwc8BfSvCw"
       let searchVideoURL= 'https://youtube.googleapis.com/youtube/v3/search?part=items&q=handi&videoEmbeddable=true&key=[YOUR_API_KEY]'
     }
     console.log(`Video URL is: ${url}`)
