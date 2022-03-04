@@ -224,7 +224,7 @@ const backBtn = document.getElementById("back-btn")
 const image = document.getElementById('page-2-img')
   btn.addEventListener("click", async () => {
     title.innerText = mealName;
-    image.src =mealImg
+    image.src = mealImg
     let urlString=chosenMeal.strYoutube;
     let url= urlString.replace('watch?v=','embed/', urlString);
     let videoID = urlString.split('watch?v=')[1]
@@ -234,7 +234,7 @@ const image = document.getElementById('page-2-img')
     let resp = await fetch(videoDataURL)
     let data = await resp.json()
     console.log("Getting recipe API video data: ", data)
-    let isEmbeddable, isPrivate, shouldUseOtherVideo;
+    let isEmbeddable, isPublic, shouldUseOtherVideo;
     if (data.items.length <1) {
       shouldUseOtherVideo = true
     } else {
