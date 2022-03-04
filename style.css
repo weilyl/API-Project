@@ -150,8 +150,9 @@ h4{
  }
 
 .video-div{
+  /* display: flex; */
   margin-top: 0px;
-  padding-left: 300px;
+  padding-left: 200px;
 }
 
 #back-btn{
@@ -176,10 +177,14 @@ h4{
 #bottom-half{
   display: flex;
   margin-top: 60px;
-  margin-right: 100px;
+  margin-right: 300px;
 }
 #ingredients{
   font-size: 15px;
+}
+
+#playlist-div{
+  /* padding-right: 100px; */
 }
 
 @media only screen and (max-width: 960px) {
@@ -199,6 +204,8 @@ h4{
     display: block;
     justify-content: center;
   }
+
+
 
 
 }
