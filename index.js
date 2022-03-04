@@ -211,36 +211,34 @@ const image = document.getElementById('page-2-img')
     let videoDataURL = `https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=${videoID}&key=${apiKey}`
     let resp = await fetch(videoDataURL)
     let data = await resp.json()
-    console.log(data)
+    console.log("Getting recipe API video data: ", data)
     let isEmbeddable, isPrivate, shouldUseOtherVideo;
     if (data.items.length <1) {
       shouldUseOtherVideo = true
     } else {
       isEmbeddable = data.items[0].status ? data.items[0].status.embeddable : false
-      isPrivate = data.items.length < 1 || data.items[0].status ? data.items[0].status.privacyStatus != "public" : true
-      shouldUseOtherVideo = isPrivate || isEmbeddable == false
+      isPublic = data.items.length < 1 || data.items[0].status ? data.items[0].status.privacyStatus == "public" : false
+      shouldUseOtherVideo = isPublic == false || isEmbeddable == false
     }
     console.log(`Should I use another video?: ${shouldUseOtherVideo}`)
     if (shouldUseOtherVideo) {
-      console.log("Hard-coding video to embeddable public video")
-      let searchVideoURL= `https://youtube.googleapis.com/youtube/v3/search?part=items%2Cid&q=${mealName}&videoEmbeddable=true&key=${apiKey}`
-      let searchResp = async () => {
-        await fetch(searchVideoURL)
+      async function searchYoutube(searchString, key) {
+        console.log("Meal name is: ", searchString)
+        let searchVideoURL= `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${searchString}&maxResults=5&key=${key}`
+        let searchResp = await fetch(searchVideoURL)
+        console.log("Searching Youtube")
+        let searchData = await searchResp.json()
+        console.log(searchData)
+        return searchData.items
       }
-      let searchData = await searchResp.json()
-      let searchResults = searchData.items
-      let useableVideo = false
-      let currIdx = 0;
-      let newVideoID = '';
-      while (useableVideo) {
-        let currVideoData = searchResults[currIdx]
-        let isCurrEmbeddable = currVideoData.status.embeddable
-        let isCurrPublic = currVideoData.status.privacyStatus == "public"
-        let useableVideo = isCurrEmbeddable && isCurrPublic
-        newVideoID = useableVideo ? currVideoData.id : ''
-        currIdx++
-      }
+      let searchResults = await searchYoutube(mealName, apiKey)
+      console.log("search results: ", searchResults)
+      let newVideoData = searchResults[0]
+      console.log("new video data: ", newVideoData)
+      let newVideoID = newVideoData.id.videoId
+      console.log("new video ID is: ", newVideoID)
       let youtubeEmbedURLPrefix = "https://www.youtube.com/embed/"
+      console.log("Hard-coding video to embeddable public video")
       url = newVideoID.length > 1? `${youtubeEmbedURLPrefix}${newVideoID}` : `${youtubeEmbedURLPrefix}PFwc8BfSvCw`
     }
     console.log(`Video URL is: ${url}`)
