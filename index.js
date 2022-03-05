@@ -220,21 +220,36 @@ const youTubeKey = "AIzaSyBp-Du1cFivdHJvLNk7j_sHZw6_Rwq_UIM"
 // - embeddable
 // - private
 // - region restriction
-async function getVideoData(videoId, key){
+async function getVideoDataFromId(videoId, key){
   let videoDataURL = `https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=${videoId}&key=${key}`
   let resp = await fetch(videoDataURL)
   let data = await resp.json()
-  return data
+  return data // data.items is an array so a single video's data is data.items[0]
 }
 
 function isVideoPlayable(videoData, key) {
-  let playbility;
-  // Assume videoData is an item in getVideoData.items array
+  // Assume videoData is an item in getVideoDataFromId.items array
+  let playbility = false;
+  if (videoData.length == 0) {
+    return playbility
+  }
   // Check if status exists
+  let status = videoData.status ? videoData.status : false
+  if (status == false) {
+    return playbility
+  }
   // Check if embeddable
+  let isEmbeddable = status.embeddable
   // Check video privacy
+  let isPublic = status.privacyStatus == "public" 
   // Check region code
-  
+  if (videoData.contentDetails.regionRestriction) {
+    // if current region (how to get current region?) in regionRestriction.blocked
+    // return playability == false
+    // refactor this into its own function?
+    // tbh class encapsulation would probably be ideal here
+  }
+  return playbility
 }
 
 // Event listener on view recipe button for a modal to show up on click
