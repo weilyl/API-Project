@@ -214,6 +214,29 @@ function setSrc(str){
 
 //page 2
 
+const youTubeKey = "AIzaSyBp-Du1cFivdHJvLNk7j_sHZw6_Rwq_UIM"
+
+// Check if video is playable in iframe
+// - embeddable
+// - private
+// - region restriction
+async function getVideoData(videoId, key){
+  let videoDataURL = `https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=${videoId}&key=${key}`
+  let resp = await fetch(videoDataURL)
+  let data = await resp.json()
+  return data
+}
+
+function isVideoPlayable(videoData, key) {
+  let playbility;
+  // Assume videoData is an item in getVideoData.items array
+  // Check if status exists
+  // Check if embeddable
+  // Check video privacy
+  // Check region code
+  
+}
+
 // Event listener on view recipe button for a modal to show up on click
 function page2(chosenMeal, btn, mealName, mealImg){
 const videoEmbed = document.getElementById("video")
@@ -268,7 +291,6 @@ const image = document.getElementById('page-2-img')
     getIngredients(chosenMeal)
     getInstructions(chosenMeal)
     setSrc(chosenMeal.strCategory);
-        // setSrc(chosenMeal.strCategory)
     page1.style.display = "none";
     page2.style.display = "block";
 
