@@ -248,7 +248,16 @@ function isVideoPlayable(videoData, key) {
     // return playability == false
     // refactor this into its own function?
     // tbh class encapsulation would probably be ideal here
+    // ////////// REFERENCES ////////////
+    // https://developers.google.com/youtube/v3/docs/videos#contentDetails.regionRestriction
+    // https://stackoverflow.com/questions/35040326/regioncode-in-youtube-api-v3
+    // https://developers.google.com/youtube/v3/docs/i18nRegions
+    // https://blog.logrocket.com/detect-location-and-local-timezone-of-users-in-javascript-3d9523c011b9/
+    // https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=IO0issT0Rmc&key=AIzaSyBp-Du1cFivdHJvLNk7j_sHZw6_Rwq_UIM
+    // https://youtube.googleapis.com/youtube/v3/videos?part=status%2CcontentDetails&id=IO0issT0Rmc&key=AIzaSyBp-Du1cFivdHJvLNk7j_sHZw6_Rwq_UIM
+    
   }
+  // fetch https://dmitripavlutin.com/javascript-fetch-async-await/
   return playbility
 }
 
